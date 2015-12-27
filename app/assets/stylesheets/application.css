@@ -9,3 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  */
+body{
+  padding-top :75px;
+  padding-left :55px;
+  background-color: green;
+
+}
+h1{
+  font-size: 65px;
+  color:white;
+}
