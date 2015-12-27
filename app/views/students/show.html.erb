@@ -17,3 +17,14 @@
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
+
+  <% @courses.each do |course| %>
+  <p>
+    <span><%= course.created_at %></span>
+    <span> Course: </span>
+  </p>
+  <p>
+    <%= course.name %>
+    <%= course.description %>
+  </p>
+<% end %>

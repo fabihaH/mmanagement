@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
+  before_filter :set_student, except: [:index, :new, :create]
   # GET /students
   # GET /students.json
+  respond_to :html
   def index
     @students = Student.all
 
@@ -13,7 +15,8 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    @student = Student.find(params[:id])
+  @course = Course.new
+  @courses = @student.courses
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +37,6 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
-    @student = Student.find(params[:id])
   end
 
   # POST /students
@@ -56,7 +58,7 @@ class StudentsController < ApplicationController
   # PUT /students/1
   # PUT /students/1.json
   def update
-    @student = Student.find(params[:id])
+
 
     respond_to do |format|
       if @student.update_attributes(params[:student])
@@ -72,7 +74,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student = Student.find(params[:id])
+
     @student.destroy
 
     respond_to do |format|
@@ -80,4 +82,8 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+  def set_student
+    @student = Student.find(params[:id])
+    end
 end

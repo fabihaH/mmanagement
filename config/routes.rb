@@ -1,8 +1,11 @@
 Mmanagement::Application.routes.draw do
-  resources :courses
+
+  resources :students do
+    resources :courses
+  end
 
 
-  resources :students
+
 
 
   # The priority is based upon order of creation:
